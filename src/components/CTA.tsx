@@ -98,7 +98,7 @@ export default function CTA() {
           viewport={{ once: true }}
           className="text-[#7A7A85] mb-16"
         >
-          Cuéntanos qué necesitas y te respondemos en menos de 24 horas.
+          Cu&eacute;ntanos qu&eacute; te quita el sue&ntilde;o y te respondemos en menos de 24 horas.
         </motion.p>
       </div>
 
@@ -130,7 +130,7 @@ export default function CTA() {
           <textarea
             name="challenge"
             required
-            placeholder="¿Cuál es tu mayor cuello de botella?"
+            placeholder="&iquest;Qu&eacute; tarea te gustar&iacute;a dejar de hacer manualmente?"
             rows={4}
             className={inputClasses}
           />

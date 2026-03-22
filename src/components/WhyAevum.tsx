@@ -6,17 +6,17 @@ const differentiators = [
   {
     display: "0",
     description:
-      "Permanencias. Sin contratos de larga duración. Te quedas porque quieres, no porque debas.",
+      "Ataduras. Sin contratos de larga duraci\u00f3n. Te quedas porque quieres, no porque debas.",
   },
   {
     display: "100%",
     description:
-      "Transparencia total. Sabes exactamente qué hacemos, cómo lo hacemos y cuánto cuesta en cada momento.",
+      "Claridad. Sabes exactamente qu\u00e9 hacemos, c\u00f3mo lo hacemos y cu\u00e1nto cuesta. Sin sorpresas.",
   },
   {
     display: "Gratis",
     description:
-      "El diagnóstico inicial es sin coste. Primero entendemos tu negocio, después hablamos de presupuesto.",
+      "El primer paso. Entendemos tu negocio antes de hablar de n\u00fameros. El diagn\u00f3stico inicial corre por nuestra cuenta.",
   },
   {
     display: "Tú",

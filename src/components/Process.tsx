@@ -8,28 +8,28 @@ const steps = [
     title: "Diagnóstico gratuito",
     badge: "1 semana",
     description:
-      "Nos sentamos contigo (virtual o presencialmente) y analizamos cómo funciona tu negocio por dentro. Identificamos dónde se pierde tiempo, dónde hay cuellos de botella y dónde la inteligencia artificial puede tener mayor impacto. Te entregamos un informe claro con oportunidades concretas, sin compromiso.",
+      "Nos sentamos contigo (virtual o presencialmente) y entendemos c\u00f3mo funciona tu negocio por dentro. Encontramos d\u00f3nde se pierde tiempo, d\u00f3nde hay cuellos de botella y d\u00f3nde la IA puede hacer una diferencia real. Te entregamos un informe claro con oportunidades concretas, sin compromiso.",
   },
   {
     number: "02",
-    title: "Diseño de la solución",
+    title: "Dise\u00f1o a medida",
     badge: "1-2 semanas",
     description:
-      "Con el diagnóstico en mano, diseñamos una solución a medida. No vendemos paquetes genéricos — cada propuesta se adapta a tu realidad, tu presupuesto y tus objetivos. Te explicamos todo en lenguaje humano: qué vamos a hacer, por qué, y qué resultados esperar.",
+      "Con el diagn\u00f3stico en mano, dise\u00f1amos exactamente lo que tu negocio necesita. No vendemos paquetes gen\u00e9ricos \u2014 cada propuesta se adapta a tu realidad, tu presupuesto y tus objetivos. Te explicamos todo en lenguaje humano: qu\u00e9 vamos a hacer, por qu\u00e9, y qu\u00e9 resultados esperar.",
   },
   {
     number: "03",
     title: "Implementación",
     badge: "2-6 semanas",
     description:
-      "Construimos e integramos la solución en tu operación real. Trabajamos en sprints cortos con demos frecuentes para que veas el progreso y puedas dar feedback en cada paso. Nada se lanza sin tu aprobación.",
+      "Construimos e integramos todo en tu operaci\u00f3n real. Trabajamos en sprints cortos con demos frecuentes para que veas el progreso y puedas dar feedback en cada paso. Nada se lanza sin tu aprobaci\u00f3n.",
   },
   {
     number: "04",
-    title: "Optimización continua",
+    title: "Mejora constante",
     badge: "Permanente",
     description:
-      "Una vez en producción, monitorizamos el rendimiento y ajustamos. La IA mejora con el tiempo y nosotros nos aseguramos de que cada mejora se aplique. Informes mensuales claros para que siempre sepas qué está pasando.",
+      "Una vez en producci\u00f3n, seguimos ah\u00ed. Monitorizamos el rendimiento, ajustamos lo que haga falta y nos aseguramos de que todo mejore con el tiempo. Informes mensuales claros para que siempre sepas qu\u00e9 est\u00e1 pasando.",
   },
 ];
 

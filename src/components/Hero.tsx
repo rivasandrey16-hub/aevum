@@ -103,9 +103,9 @@ export default function Hero() {
           variants={fadeUp}
           className="mx-auto max-w-xl text-base leading-relaxed text-[#7A7A85] md:text-lg"
         >
-          Integramos inteligencia artificial en el coraz&oacute;n
+          Integramos inteligencia artificial en el d&iacute;a a d&iacute;a
           <br />
-          de tu negocio para que escale sin l&iacute;mites
+          de tu negocio para que crezca con menos esfuerzo
         </motion.p>
 
         {/* Tagline */}
@@ -113,7 +113,7 @@ export default function Hero() {
           variants={fadeUp}
           className="text-sm tracking-wider text-[#C9A84C] opacity-60"
         >
-          Tecnolog&iacute;a que trabaja mientras t&uacute; descansas
+          Tu equipo m&aacute;s listo, disponible 24/7
         </motion.p>
 
         {/* Buttons */}

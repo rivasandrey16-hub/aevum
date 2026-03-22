@@ -132,7 +132,7 @@ const cases: CaseData[] = [
     problem:
       "El hotel recibía consultas por WhatsApp, email y su web a todas horas, pero solo podían responder en horario de oficina. Para cuando contestaban, el cliente ya había reservado en otro sitio.",
     solution:
-      "Creamos un asistente virtual que responde al instante en los tres canales, resuelve dudas sobre disponibilidad, precios y servicios, y completa la reserva sin intervención humana.",
+      "Creamos un agente de IA especializado que responde al instante en los tres canales, resuelve dudas sobre disponibilidad, precios y servicios, y completa la reserva sin intervenci\u00f3n humana.",
     metrics: [
       { value: "40%", label: "más reservas" },
       { value: "3seg", label: "tiempo respuesta" },
@@ -141,11 +141,11 @@ const cases: CaseData[] = [
   },
   {
     badge: "Ecommerce",
-    title: "Una tienda online ahogada en trabajo manual",
+    title: "Una tienda online que no daba abasto",
     problem:
       "Cada pedido requería actualizar stock a mano, enviar confirmaciones, generar etiquetas de envío y responder las mismas preguntas una y otra vez. El equipo no daba abasto.",
     solution:
-      "Automatizamos todo el flujo post-venta: confirmación automática, actualización de inventario en tiempo real, generación de etiquetas y un chatbot que resuelve el 80% de las consultas sin intervención.",
+      "Automatizamos todo el flujo post-venta: confirmaci\u00f3n autom\u00e1tica, actualizaci\u00f3n de inventario en tiempo real, generaci\u00f3n de etiquetas y un agente de atenci\u00f3n inteligente que resuelve el 80% de las consultas sin intervenci\u00f3n.",
     metrics: [
       { value: "6h", label: "ahorradas/día" },
       { value: "80%", label: "consultas auto" },

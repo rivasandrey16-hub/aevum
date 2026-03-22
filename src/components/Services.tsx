@@ -8,37 +8,37 @@ const services = [
     image: "automation.jpeg",
     title: "Automatización de operaciones",
     description:
-      "Eliminamos las tareas repetitivas que consumen horas de tu equipo. Desde procesar facturas hasta gestionar inventario, la IA se encarga para que tu gente se enfoque en lo que importa.",
+      "Le quitamos de encima a tu equipo las tareas repetitivas que nadie quiere hacer. Desde procesar facturas hasta gestionar inventario, la IA se encarga para que tu gente se dedique a lo que realmente mueve el negocio.",
   },
   {
     image: "agents.jpeg",
-    title: "Agentes de IA autónomos",
+    title: "Agentes de IA especializados",
     description:
-      "Asistentes virtuales que trabajan 24/7 atendiendo clientes, resolviendo dudas y gestionando solicitudes. Como tener un empleado incansable que nunca necesita vacaciones.",
+      "Agentes inteligentes que atienden a tus clientes, resuelven dudas y gestionan solicitudes a cualquier hora. Como sumar a tu equipo a alguien que nunca se cansa y siempre tiene la respuesta.",
   },
   {
     image: "analytics.jpeg",
     title: "Análisis predictivo y dashboards",
     description:
-      "Convertimos tus datos en decisiones claras. Dashboards que te muestran qué va a pasar antes de que pase, para que siempre vayas un paso adelante.",
+      "Tus datos ya te est\u00e1n diciendo cosas \u2014 nosotros te ayudamos a escucharlos. Dashboards claros que te muestran hacia d\u00f3nde va tu negocio antes de que llegue ah\u00ed.",
   },
   {
     image: "integrations.jpeg",
     title: "Arquitectura e integraciones",
     description:
-      "Conectamos todas tus herramientas para que hablen entre sí. Tu CRM, tu ERP, tu web — todo sincronizado y funcionando como un reloj.",
+      "Hacemos que tus herramientas se entiendan entre s\u00ed. Tu CRM, tu ERP, tu web \u2014 todo conectado y movi\u00e9ndose en la misma direcci\u00f3n.",
   },
   {
     image: "consulting.jpeg",
-    title: "Consultoría estratégica",
+    title: "Consultor\u00eda estrat\u00e9gica",
     description:
-      "Te ayudamos a entender dónde la IA puede marcar la diferencia real en tu negocio. Sin humo, sin promesas vacías — solo un plan claro y ejecutable.",
+      "Nos sentamos contigo y te decimos, con honestidad, d\u00f3nde la IA te va a dar resultados y d\u00f3nde no. Sin humo, sin jerga \u2014 un plan claro que puedas ejecutar ma\u00f1ana.",
   },
   {
     image: "content.jpeg",
     title: "Contenido y creatividad con IA",
     description:
-      "Generación de contenido, imágenes y materiales de marketing potenciados por IA. Más contenido, más rápido, sin perder la esencia de tu marca.",
+      "Contenido, im\u00e1genes y materiales de marketing creados con IA y con criterio. M\u00e1s volumen, m\u00e1s velocidad, pero siempre con la voz y la personalidad de tu marca.",
   },
 ];
 
@@ -64,8 +64,8 @@ export default function Services() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         />
         <p className="text-[#7A7A85] max-w-2xl mx-auto text-center mb-20">
-          Soluciones de inteligencia artificial diseñadas para resolver problemas
-          reales de tu negocio.
+          Inteligencia artificial aplicada a lo que de verdad importa
+          en tu negocio.
         </p>
       </div>
 
