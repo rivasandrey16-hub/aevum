@@ -64,8 +64,25 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Legal links */}
+        <div className="mt-10 flex items-center justify-center gap-6">
+          <a
+            href="/aevum/privacidad"
+            className="text-xs text-[#7A7A85] opacity-50 hover:opacity-100 hover:text-[#C9A84C] transition-all duration-300"
+          >
+            Política de Privacidad
+          </a>
+          <span className="text-[#C9A84C] opacity-20 text-xs">·</span>
+          <a
+            href="/aevum/terminos"
+            className="text-xs text-[#7A7A85] opacity-50 hover:opacity-100 hover:text-[#C9A84C] transition-all duration-300"
+          >
+            Términos y Condiciones
+          </a>
+        </div>
+
         {/* Bottom row */}
-        <div className="mt-12 pt-8 border-t border-[rgba(255,255,255,0.04)] flex justify-between items-center flex-wrap gap-4">
+        <div className="mt-8 pt-8 border-t border-[rgba(255,255,255,0.04)] flex justify-between items-center flex-wrap gap-4">
           <p className="text-xs text-[#7A7A85] opacity-50">
             &copy; {new Date().getFullYear()} AEVUM. Todos los derechos reservados.
           </p>

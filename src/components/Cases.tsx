@@ -132,7 +132,7 @@ const cases: CaseData[] = [
     problem:
       "El hotel recibía consultas por WhatsApp, email y su web a todas horas, pero solo podían responder en horario de oficina. Para cuando contestaban, el cliente ya había reservado en otro sitio.",
     solution:
-      "Creamos un agente de IA especializado que responde al instante en los tres canales, resuelve dudas sobre disponibilidad, precios y servicios, y completa la reserva sin intervenci\u00f3n humana.",
+      "Diseñamos un agente de IA especializado en hospitalidad que atiende los tres canales al instante, resuelve consultas sobre disponibilidad y servicios, y cierra la reserva de forma autónoma.",
     metrics: [
       { value: "40%", label: "más reservas" },
       { value: "3seg", label: "tiempo respuesta" },
@@ -145,7 +145,7 @@ const cases: CaseData[] = [
     problem:
       "Cada pedido requería actualizar stock a mano, enviar confirmaciones, generar etiquetas de envío y responder las mismas preguntas una y otra vez. El equipo no daba abasto.",
     solution:
-      "Automatizamos todo el flujo post-venta: confirmaci\u00f3n autom\u00e1tica, actualizaci\u00f3n de inventario en tiempo real, generaci\u00f3n de etiquetas y un agente de atenci\u00f3n inteligente que resuelve el 80% de las consultas sin intervenci\u00f3n.",
+      "Orquestamos todo el flujo post-venta de principio a fin: confirmaciones, inventario en tiempo real, logística y un agente de atención especializado que resuelve el 80% de las consultas sin intervención humana.",
     metrics: [
       { value: "6h", label: "ahorradas/día" },
       { value: "80%", label: "consultas auto" },
@@ -158,7 +158,7 @@ const cases: CaseData[] = [
     problem:
       "Revisar un contrato complejo llevaba entre 2 y 4 horas de un abogado senior. Con 30+ contratos por semana, el equipo vivía desbordado y los clientes esperaban demasiado.",
     solution:
-      "Implementamos un sistema de IA que lee, analiza y resume contratos en minutos, destacando cláusulas de riesgo y comparando con plantillas estándar. El abogado revisa el resumen, no las 50 páginas.",
+      "Implementamos un sistema de análisis documental con IA que procesa contratos en minutos, identifica cláusulas críticas y genera resúmenes ejecutivos. El abogado valida conclusiones, no lee 50 páginas.",
     metrics: [
       { value: "15min", label: "por contrato" },
       { value: "90%", label: "menos tiempo" },

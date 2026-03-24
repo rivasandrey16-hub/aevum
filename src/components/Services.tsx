@@ -8,37 +8,37 @@ const services = [
     image: "automation.jpeg",
     title: "Automatización de operaciones",
     description:
-      "Le quitamos de encima a tu equipo las tareas repetitivas que nadie quiere hacer. Desde procesar facturas hasta gestionar inventario, la IA se encarga para que tu gente se dedique a lo que realmente mueve el negocio.",
+      "Identificamos los procesos que drenan tiempo a tu equipo y los convertimos en flujos autónomos. Tu gente deja de ser operadora y vuelve a ser estratega.",
   },
   {
     image: "agents.jpeg",
     title: "Agentes de IA especializados",
     description:
-      "Agentes inteligentes que atienden a tus clientes, resuelven dudas y gestionan solicitudes a cualquier hora. Como sumar a tu equipo a alguien que nunca se cansa y siempre tiene la respuesta.",
+      "Agentes de IA entrenados específicamente para tu industria. Entienden contexto, toman decisiones y ejecutan tareas complejas de forma autónoma — como un especialista dedicado que nunca descansa.",
   },
   {
     image: "analytics.jpeg",
     title: "Análisis predictivo y dashboards",
     description:
-      "Tus datos ya te est\u00e1n diciendo cosas \u2014 nosotros te ayudamos a escucharlos. Dashboards claros que te muestran hacia d\u00f3nde va tu negocio antes de que llegue ah\u00ed.",
+      "Transformamos datos dispersos en visión estratégica. Dashboards que anticipan tendencias y te permiten tomar decisiones con certeza, no con intuición.",
   },
   {
     image: "integrations.jpeg",
     title: "Arquitectura e integraciones",
     description:
-      "Hacemos que tus herramientas se entiendan entre s\u00ed. Tu CRM, tu ERP, tu web \u2014 todo conectado y movi\u00e9ndose en la misma direcci\u00f3n.",
+      "Conectamos todos los sistemas de tu operación en un ecosistema unificado. CRM, ERP, plataformas — todo sincronizado y funcionando como un organismo.",
   },
   {
     image: "consulting.jpeg",
     title: "Consultor\u00eda estrat\u00e9gica",
     description:
-      "Nos sentamos contigo y te decimos, con honestidad, d\u00f3nde la IA te va a dar resultados y d\u00f3nde no. Sin humo, sin jerga \u2014 un plan claro que puedas ejecutar ma\u00f1ana.",
+      "Antes de construir, entendemos. Mapeamos tu operación, identificamos oportunidades reales y te entregamos una hoja de ruta ejecutable — sin promesas vacías.",
   },
   {
     image: "content.jpeg",
     title: "Contenido y creatividad con IA",
     description:
-      "Contenido, im\u00e1genes y materiales de marketing creados con IA y con criterio. M\u00e1s volumen, m\u00e1s velocidad, pero siempre con la voz y la personalidad de tu marca.",
+      "Producción de contenido, imágenes y piezas de comunicación potenciadas por IA. Mayor volumen sin sacrificar la identidad de tu marca — escalamos tu creatividad.",
   },
 ];
 
@@ -64,8 +64,8 @@ export default function Services() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         />
         <p className="text-[#7A7A85] max-w-2xl mx-auto text-center mb-20">
-          Inteligencia artificial aplicada a lo que de verdad importa
-          en tu negocio.
+          No vendemos tecnología por vender. Cada intervención resuelve
+          un problema real de tu operación.
         </p>
       </div>
 
