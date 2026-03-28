@@ -141,7 +141,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     </div>
     <!-- Main title -->
     <h1 id="heroTitle" class="font-serif italic font-light text-white/90 leading-[1.05] mb-8" style="font-size:clamp(2.8rem, 7vw, 6.5rem);">
-      Inteligencia artificial que <span class="text-cyan">trabaja</span> para tu negocio
+      Lo que tu equipo no puede hacer, <span class="text-cyan">nosotros</span> lo automatizamos
     </h1>
     <!-- Subtitle -->
     <p class="font-sans font-light text-body max-w-[600px] mx-auto text-base md:text-lg mb-12 rv" style="line-height:1.8;">
@@ -447,27 +447,15 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <span class="text-xs font-sans font-medium tracking-[0.3em] uppercase text-cyan/60 block mb-4">Da el primer paso</span>
       <h2 class="font-serif italic font-light text-white/90 text-4xl md:text-6xl">Hablemos</h2>
     </div>
-    <form id="contactForm" class="text-left space-y-6 rv" onsubmit="return false;">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <input type="text" placeholder="Nombre" class="form-input" required>
-        <input type="email" placeholder="Email" class="form-input" required>
-      </div>
-      <input type="text" placeholder="Empresa" class="form-input">
-      <select class="form-input">
-        <option value="" disabled selected>Selecciona un servicio</option>
-        <option>Automatización de operaciones</option>
-        <option>Agentes de IA especializados</option>
-        <option>Análisis predictivo y dashboards</option>
-        <option>Arquitectura e integraciones</option>
-        <option>Consultoría estratégica</option>
-        <option>Contenido y creatividad con IA</option>
-        <option>Otro</option>
-      </select>
-      <textarea placeholder="Cuéntanos sobre tu proyecto..." class="form-input" rows="4"></textarea>
+    <form id="contactForm" class="text-left space-y-6 rv">
+      <input type="text" name="company" placeholder="Tu empresa" class="form-input" required>
+      <input type="email" name="email" placeholder="Tu email" class="form-input" required>
+      <textarea name="challenge" placeholder="¿Qué tarea te gustaría dejar de hacer manualmente?" class="form-input" rows="4" required></textarea>
+      <div id="formMsg" class="hidden text-center p-4 rounded-xl border text-sm"></div>
       <div class="text-center pt-4">
-        <button type="submit" class="px-10 py-3.5 bg-cyan text-black font-sans font-medium text-sm rounded-full hover:shadow-[0_0_30px_rgba(0,242,255,0.3)] transition-all duration-300">Enviar mensaje</button>
+        <button id="submitBtn" type="submit" class="px-10 py-3.5 bg-cyan text-black font-sans font-medium text-sm rounded-full hover:shadow-[0_0_30px_rgba(0,242,255,0.3)] transition-all duration-300">Enviar mensaje</button>
       </div>
-      <p class="text-center text-xs text-white/20 font-sans font-light pt-2">Confidencialidad garantizada. Respuesta en menos de 24h.</p>
+      <p class="text-center text-xs text-white/20 font-sans font-light pt-2">Sin compromiso · Respondemos en &lt;24h · Tu información es confidencial</p>
     </form>
   </div>
 </section>
@@ -477,8 +465,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   <div class="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
     <span class="font-serif italic font-light text-white/40 text-lg">SELDREN<span class="text-cyan">.</span></span>
     <div class="flex items-center gap-6 text-xs font-sans font-light text-white/20">
-      <a href="https://twitter.com" target="_blank" rel="noopener" class="hover:text-white/50 transition-colors">Twitter</a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener" class="hover:text-white/50 transition-colors">LinkedIn</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener" class="hover:text-white/50 transition-colors">Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-white/50 transition-colors">Instagram</a>
       <a href="#" class="hover:text-white/50 transition-colors">Privacidad</a>
       <a href="#" class="hover:text-white/50 transition-colors">Términos</a>
     </div>
@@ -489,12 +477,12 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 <!-- SCRIPTS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 (function() {
   'use strict';
 
-  /* ─── PARTICLES ─── */
+  /* ─── PARTICLES (suaves) ─── */
   const canvas = document.getElementById('particleCanvas');
   const ctx = canvas.getContext('2d');
   let w, h, particles, mouse = { x: -9999, y: -9999 };
@@ -513,8 +501,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       particles.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
         r: Math.random() * 1.5 + 0.5
       });
     }
@@ -525,19 +513,19 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
 
-      // Magnetic cursor effect
+      // Magnetic cursor effect — suave
       const dx = mouse.x - p.x;
       const dy = mouse.y - p.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 180) {
-        const force = 0.04 * (1 - dist / 180);
+      if (dist < 200) {
+        const force = 0.012 * (1 - dist / 200);
         p.vx += dx * force;
         p.vy += dy * force;
       }
 
-      // Damping
-      p.vx *= 0.98;
-      p.vy *= 0.98;
+      // Damping fuerte para movimiento fluido
+      p.vx *= 0.95;
+      p.vy *= 0.95;
 
       p.x += p.vx;
       p.y += p.vy;
@@ -564,7 +552,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = 'rgba(0,242,255,' + (0.1 * (1 - d / MAX_DIST)) + ')';
+          ctx.strokeStyle = 'rgba(0,242,255,' + (0.08 * (1 - d / MAX_DIST)) + ')';
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
@@ -573,7 +561,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     requestAnimationFrame(animate);
   }
 
-  window.addEventListener('resize', () => { resize(); });
+  window.addEventListener('resize', resize);
   window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
   window.addEventListener('touchmove', (e) => { mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; }, { passive: true });
   window.addEventListener('touchend', () => { mouse.x = -9999; mouse.y = -9999; });
@@ -597,15 +585,13 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   /* ─── MOBILE MENU ─── */
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
+  menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
   mobileMenu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => { mobileMenu.classList.add('hidden'); });
   });
 
   /* ─── GSAP ─── */
-  gsap.registerPlugin(ScrollTrigger, SplitText);
+  gsap.registerPlugin(ScrollTrigger);
 
   // Reveal animations
   document.querySelectorAll('.rv').forEach((el) => {
@@ -622,18 +608,27 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     });
   });
 
-  // Hero SplitText
+  // Hero title — animación char-by-char manual (sin SplitText)
   const heroTitle = document.getElementById('heroTitle');
   if (heroTitle) {
-    const split = new SplitText(heroTitle, { type: 'chars' });
-    gsap.from(split.chars, {
-      opacity: 0,
-      y: 80,
-      rotateX: -90,
-      stagger: 0.03,
-      duration: 1,
-      ease: 'back.out(1.7)',
-      delay: 0.5
+    const html = heroTitle.innerHTML;
+    let charIndex = 0;
+    const wrapped = html.replace(/(<[^>]+>)|([^<])/g, (match, tag, char) => {
+      if (tag) return tag;
+      const i = charIndex++;
+      return '<span class="htc" style="display:inline-block;opacity:0;transform:translateY(60px) rotateX(-60deg)">' + (char === ' ' ? '&nbsp;' : char) + '</span>';
+    });
+    heroTitle.innerHTML = wrapped;
+    heroTitle.style.opacity = '1';
+    const chars = heroTitle.querySelectorAll('.htc');
+    gsap.to(chars, {
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      stagger: 0.025,
+      duration: 0.8,
+      ease: 'back.out(1.4)',
+      delay: 0.4
     });
   }
 
@@ -642,9 +637,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     const target = parseInt(el.getAttribute('data-count'));
     if (target === 0 && el.getAttribute('data-static')) {
       ScrollTrigger.create({
-        trigger: el,
-        start: 'top 88%',
-        once: true,
+        trigger: el, start: 'top 88%', once: true,
         onEnter: () => { el.textContent = el.getAttribute('data-static'); }
       });
       return;
@@ -652,18 +645,51 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     if (target === 0) return;
     const obj = { val: 0 };
     ScrollTrigger.create({
-      trigger: el,
-      start: 'top 88%',
-      once: true,
+      trigger: el, start: 'top 88%', once: true,
       onEnter: () => {
         gsap.to(obj, {
-          val: target,
-          duration: 2,
-          ease: 'power2.out',
+          val: target, duration: 2, ease: 'power2.out',
           onUpdate: () => { el.textContent = Math.round(obj.val); }
         });
       }
     });
+  });
+
+  /* ─── EMAILJS ─── */
+  emailjs.init('wagMNLiGaqaEW6yAG');
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formMsg = document.getElementById('formMsg');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitBtn.textContent = 'Enviando...';
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-60', 'cursor-wait');
+
+    emailjs.sendForm('service_ctkhk9x', 'template_mw49h66', form)
+      .then(function() {
+        formMsg.className = 'text-center p-4 rounded-xl border border-cyan/20 bg-cyan/5 text-sm text-cyan';
+        formMsg.textContent = '✓ Tu mensaje fue enviado correctamente a SELDREN. Te responderemos en menos de 24 horas.';
+        formMsg.classList.remove('hidden');
+        form.reset();
+        submitBtn.textContent = '¡Mensaje enviado!';
+        submitBtn.classList.remove('opacity-60', 'cursor-wait');
+        setTimeout(function() {
+          submitBtn.textContent = 'Enviar mensaje';
+          submitBtn.disabled = false;
+          formMsg.classList.add('hidden');
+        }, 5000);
+      })
+      .catch(function() {
+        formMsg.className = 'text-center p-4 rounded-xl border border-red-500/20 bg-red-500/5 text-sm text-red-400';
+        formMsg.textContent = 'No se pudo enviar el mensaje. Verifica tu conexión e inténtalo de nuevo.';
+        formMsg.classList.remove('hidden');
+        submitBtn.textContent = 'Enviar mensaje';
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-60', 'cursor-wait');
+        setTimeout(function() { formMsg.classList.add('hidden'); }, 4000);
+      });
   });
 
 })();
