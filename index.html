@@ -701,82 +701,192 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 })();
 </script>
 
-<!-- ═══════════════════ SELDREN AI CHATBOT (n8n) ═══════════════════ -->
-<link href="https://cdn.jsdelivr.net/npm/@n8n/chat@latest/dist/style.css" rel="stylesheet">
-<script type="module">
-import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat@latest/dist/chat.bundle.es.js';
-
-createChat({
-  webhookUrl: 'https://proyectos-prospectar-clientes-n8n.tm5bcq.easypanel.host/webhook/seldren-chat/chat',
-  mode: 'window',
-  showWelcomeScreen: false,
-  initialMessages: [
-    '¡Hola! 👋 Soy el asistente virtual de **SELDREN**. ¿En qué puedo ayudarte hoy?'
-  ],
-  i18n: {
-    en: {
-      title: 'SELDREN AI',
-      subtitle: 'Asistente virtual premium',
-      footer: '',
-      getStarted: 'Nueva conversación',
-      inputPlaceholder: 'Escribe tu mensaje...',
-    }
-  },
-  theme: {
-    button: {
-      backgroundColor: '#00f2ff',
-      color: '#050505',
-      iconColor: '#050505',
-      size: '56',
-      borderRadius: '50%',
-    },
-    chatWindow: {
-      backgroundColor: '#0a0a0a',
-      textColor: '#e0e0e0',
-      titleColor: '#ffffff',
-      subtitleColor: '#00f2ff',
-      borderRadius: '16px',
-      width: '380px',
-      height: '520px',
-    },
-    userMessage: {
-      backgroundColor: '#00f2ff',
-      textColor: '#050505',
-      borderRadius: '14px 14px 4px 14px',
-    },
-    botMessage: {
-      backgroundColor: '#1a1a1a',
-      textColor: '#e0e0e0',
-      borderRadius: '14px 14px 14px 4px',
-    },
-    input: {
-      backgroundColor: '#111111',
-      textColor: '#ffffff',
-      borderColor: '#222222',
-      borderRadius: '12px',
-      placeholderColor: '#666666',
-    },
-    header: {
-      backgroundColor: '#050505',
-      borderBottom: '1px solid rgba(0,242,255,0.15)',
-    },
-    footer: {
-      display: 'none',
-    }
-  }
-});
-</script>
+<!-- ═══════════════════ VQRA — SELDREN AI ASSISTANT ═══════════════════ -->
 <style>
-/* Chat button glow */
-.n8n-chat .chat-button { box-shadow: 0 0 24px rgba(0,242,255,0.25) !important; transition: box-shadow 0.3s ease !important; }
-.n8n-chat .chat-button:hover { box-shadow: 0 0 36px rgba(0,242,255,0.45) !important; }
-/* Scrollbar inside chat */
-.n8n-chat .chat-messages-container::-webkit-scrollbar { width: 4px; }
-.n8n-chat .chat-messages-container::-webkit-scrollbar-track { background: transparent; }
-.n8n-chat .chat-messages-container::-webkit-scrollbar-thumb { background: rgba(0,242,255,0.2); border-radius: 4px; }
-/* Override any white backgrounds */
-.n8n-chat .chat-window { border: 1px solid rgba(0,242,255,0.1) !important; box-shadow: 0 8px 40px rgba(0,0,0,0.6) !important; }
+/* ── VQRA Chat Widget ── */
+#vqra-toggle{position:fixed;bottom:28px;right:28px;z-index:9999;width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;background:radial-gradient(circle at 30% 30%,#33f6ff,#00d4e0 60%,#009aa3);box-shadow:0 0 30px rgba(0,242,255,0.25),0 4px 20px rgba(0,0,0,0.4);transition:all .4s cubic-bezier(.175,.885,.32,1.275);display:flex;align-items:center;justify-content:center;outline:none}
+#vqra-toggle:hover{transform:scale(1.08);box-shadow:0 0 44px rgba(0,242,255,0.4),0 6px 28px rgba(0,0,0,0.5)}
+#vqra-toggle.open{transform:rotate(90deg) scale(1.05)}
+#vqra-toggle svg{width:26px;height:26px;fill:none;stroke:#050505;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s ease}
+
+#vqra-panel{position:fixed;bottom:100px;right:28px;z-index:9998;width:380px;max-height:560px;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(20px) scale(0.95);pointer-events:none;transition:all .35s cubic-bezier(.175,.885,.32,1.275);background:rgba(10,10,12,0.92);backdrop-filter:blur(40px) saturate(1.4);-webkit-backdrop-filter:blur(40px) saturate(1.4);border:1px solid rgba(0,242,255,0.08);box-shadow:0 24px 80px rgba(0,0,0,0.6),0 0 1px rgba(0,242,255,0.15),inset 0 1px 0 rgba(255,255,255,0.03)}
+#vqra-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+
+/* Header */
+.vqra-header{padding:20px 22px 16px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(255,255,255,0.04);flex-shrink:0}
+.vqra-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#00f2ff 0%,#0080ff 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 16px rgba(0,242,255,0.2)}
+.vqra-avatar span{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:#050505;letter-spacing:0.5px}
+.vqra-hinfo h3{font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:#fff;margin:0;letter-spacing:0.3px}
+.vqra-hinfo p{font-family:'Inter',sans-serif;font-size:11.5px;color:rgba(0,242,255,0.7);margin:2px 0 0;letter-spacing:0.2px}
+.vqra-status{width:7px;height:7px;border-radius:50%;background:#00ff88;box-shadow:0 0 6px rgba(0,255,136,0.5);margin-left:auto;flex-shrink:0}
+
+/* Messages */
+.vqra-messages{flex:1;overflow-y:auto;padding:18px 18px 12px;display:flex;flex-direction:column;gap:12px;min-height:280px;max-height:360px}
+.vqra-messages::-webkit-scrollbar{width:3px}
+.vqra-messages::-webkit-scrollbar-track{background:transparent}
+.vqra-messages::-webkit-scrollbar-thumb{background:rgba(0,242,255,0.12);border-radius:4px}
+
+.vqra-msg{max-width:82%;padding:12px 16px;font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.55;animation:vqra-fade .35s ease}
+.vqra-msg.bot{align-self:flex-start;background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.88);border-radius:20px 20px 20px 6px;border:1px solid rgba(255,255,255,0.04)}
+.vqra-msg.user{align-self:flex-end;background:linear-gradient(135deg,#00f2ff,#00c8d4);color:#050505;border-radius:20px 20px 6px 20px;font-weight:400}
+.vqra-msg.bot .vqra-label{font-size:10.5px;color:rgba(0,242,255,0.5);margin-bottom:4px;font-weight:500;letter-spacing:0.8px;text-transform:uppercase}
+
+/* Typing indicator */
+.vqra-typing{display:flex;gap:5px;padding:14px 18px;align-self:flex-start}
+.vqra-typing span{width:6px;height:6px;border-radius:50%;background:rgba(0,242,255,0.4);animation:vqra-bounce 1.4s infinite}
+.vqra-typing span:nth-child(2){animation-delay:.15s}
+.vqra-typing span:nth-child(3){animation-delay:.3s}
+
+/* Input area */
+.vqra-input-area{padding:12px 14px 16px;border-top:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;gap:10px;flex-shrink:0}
+#vqra-input{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:22px;padding:11px 18px;color:#fff;font-family:'Inter',sans-serif;font-size:13.5px;outline:none;transition:border-color .25s ease,box-shadow .25s ease;resize:none}
+#vqra-input::placeholder{color:rgba(255,255,255,0.22)}
+#vqra-input:focus{border-color:rgba(0,242,255,0.25);box-shadow:0 0 0 3px rgba(0,242,255,0.06)}
+#vqra-send{width:38px;height:38px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#00f2ff,#00c8d4);display:flex;align-items:center;justify-content:center;transition:all .25s ease;flex-shrink:0;opacity:0.85}
+#vqra-send:hover{opacity:1;transform:scale(1.06)}
+#vqra-send:disabled{opacity:0.3;cursor:default;transform:none}
+#vqra-send svg{width:16px;height:16px;fill:none;stroke:#050505;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* Quick actions */
+.vqra-quick{display:flex;gap:6px;padding:0 18px 14px;flex-wrap:wrap}
+.vqra-quick button{background:rgba(0,242,255,0.06);border:1px solid rgba(0,242,255,0.1);color:rgba(0,242,255,0.8);border-radius:18px;padding:6px 14px;font-family:'Inter',sans-serif;font-size:11.5px;cursor:pointer;transition:all .2s ease;white-space:nowrap}
+.vqra-quick button:hover{background:rgba(0,242,255,0.12);border-color:rgba(0,242,255,0.2);color:#00f2ff}
+
+@keyframes vqra-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes vqra-bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+
+/* Mobile */
+@media(max-width:480px){
+  #vqra-panel{right:0;bottom:0;left:0;width:100%;max-height:100vh;max-height:100dvh;border-radius:0}
+  #vqra-toggle{bottom:20px;right:20px}
+}
 </style>
+
+<!-- Toggle button -->
+<button id="vqra-toggle" aria-label="Abrir chat VQRA">
+  <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</button>
+
+<!-- Chat panel -->
+<div id="vqra-panel">
+  <div class="vqra-header">
+    <div class="vqra-avatar"><span>V</span></div>
+    <div class="vqra-hinfo">
+      <h3>VQRA</h3>
+      <p>IA de SELDREN &middot; En linea</p>
+    </div>
+    <div class="vqra-status"></div>
+  </div>
+  <div class="vqra-messages" id="vqra-messages">
+    <div class="vqra-msg bot">
+      <div class="vqra-label">VQRA</div>
+      Hola, soy <strong>VQRA</strong>, la inteligencia artificial de SELDREN. ¿En que puedo ayudarte hoy?
+    </div>
+  </div>
+  <div class="vqra-quick" id="vqra-quick">
+    <button data-q="¿Qué servicios ofrece SELDREN?">Servicios</button>
+    <button data-q="¿Cómo funciona la automatización con IA?">Automatización</button>
+    <button data-q="Quiero agendar una consulta gratuita">Consulta gratis</button>
+  </div>
+  <div class="vqra-input-area">
+    <input type="text" id="vqra-input" placeholder="Escribe tu mensaje..." autocomplete="off">
+    <button id="vqra-send" disabled aria-label="Enviar"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const WEBHOOK = 'https://proyectos-prospectar-clientes-n8n.tm5bcq.easypanel.host/webhook/vqra-chat/chat';
+  const SESSION = 'vqra-' + Math.random().toString(36).slice(2,10);
+
+  const toggle = document.getElementById('vqra-toggle');
+  const panel  = document.getElementById('vqra-panel');
+  const msgs   = document.getElementById('vqra-messages');
+  const input  = document.getElementById('vqra-input');
+  const sendBtn= document.getElementById('vqra-send');
+  const quick  = document.getElementById('vqra-quick');
+  let isOpen = false, sending = false;
+
+  toggle.addEventListener('click', function(){
+    isOpen = !isOpen;
+    panel.classList.toggle('open', isOpen);
+    toggle.classList.toggle('open', isOpen);
+    if(isOpen) setTimeout(function(){ input.focus(); }, 350);
+  });
+
+  input.addEventListener('input', function(){
+    sendBtn.disabled = !input.value.trim() || sending;
+  });
+
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); send(); }
+  });
+
+  sendBtn.addEventListener('click', send);
+
+  quick.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-q]');
+    if(btn){ input.value = btn.getAttribute('data-q'); send(); }
+  });
+
+  function addMsg(text, type){
+    var div = document.createElement('div');
+    div.className = 'vqra-msg ' + type;
+    if(type === 'bot') div.innerHTML = '<div class="vqra-label">VQRA</div>' + text;
+    else div.textContent = text;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    return div;
+  }
+
+  function showTyping(){
+    var div = document.createElement('div');
+    div.className = 'vqra-typing';
+    div.id = 'vqra-typing';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function hideTyping(){
+    var el = document.getElementById('vqra-typing');
+    if(el) el.remove();
+  }
+
+  function send(){
+    var text = input.value.trim();
+    if(!text || sending) return;
+    sending = true;
+    sendBtn.disabled = true;
+    input.value = '';
+    addMsg(text, 'user');
+
+    // Hide quick actions after first user message
+    if(quick) quick.style.display = 'none';
+
+    showTyping();
+
+    fetch(WEBHOOK, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'sendMessage', sessionId: SESSION, chatInput: text })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      hideTyping();
+      addMsg(data.output || 'Lo siento, hubo un error. Intenta de nuevo.', 'bot');
+      sending = false;
+      sendBtn.disabled = !input.value.trim();
+    })
+    .catch(function(){
+      hideTyping();
+      addMsg('No se pudo conectar. Verifica tu conexion e intenta de nuevo.', 'bot');
+      sending = false;
+      sendBtn.disabled = !input.value.trim();
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
