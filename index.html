@@ -700,5 +700,83 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 
 })();
 </script>
+
+<!-- ═══════════════════ SELDREN AI CHATBOT (n8n) ═══════════════════ -->
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat@latest/dist/style.css" rel="stylesheet">
+<script type="module">
+import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat@latest/dist/chat.bundle.es.js';
+
+createChat({
+  webhookUrl: 'https://proyectos-prospectar-clientes-n8n.tm5bcq.easypanel.host/webhook/seldren-chat/chat',
+  mode: 'window',
+  showWelcomeScreen: false,
+  initialMessages: [
+    '¡Hola! 👋 Soy el asistente virtual de **SELDREN**. ¿En qué puedo ayudarte hoy?'
+  ],
+  i18n: {
+    en: {
+      title: 'SELDREN AI',
+      subtitle: 'Asistente virtual premium',
+      footer: '',
+      getStarted: 'Nueva conversación',
+      inputPlaceholder: 'Escribe tu mensaje...',
+    }
+  },
+  theme: {
+    button: {
+      backgroundColor: '#00f2ff',
+      color: '#050505',
+      iconColor: '#050505',
+      size: '56',
+      borderRadius: '50%',
+    },
+    chatWindow: {
+      backgroundColor: '#0a0a0a',
+      textColor: '#e0e0e0',
+      titleColor: '#ffffff',
+      subtitleColor: '#00f2ff',
+      borderRadius: '16px',
+      width: '380px',
+      height: '520px',
+    },
+    userMessage: {
+      backgroundColor: '#00f2ff',
+      textColor: '#050505',
+      borderRadius: '14px 14px 4px 14px',
+    },
+    botMessage: {
+      backgroundColor: '#1a1a1a',
+      textColor: '#e0e0e0',
+      borderRadius: '14px 14px 14px 4px',
+    },
+    input: {
+      backgroundColor: '#111111',
+      textColor: '#ffffff',
+      borderColor: '#222222',
+      borderRadius: '12px',
+      placeholderColor: '#666666',
+    },
+    header: {
+      backgroundColor: '#050505',
+      borderBottom: '1px solid rgba(0,242,255,0.15)',
+    },
+    footer: {
+      display: 'none',
+    }
+  }
+});
+</script>
+<style>
+/* Chat button glow */
+.n8n-chat .chat-button { box-shadow: 0 0 24px rgba(0,242,255,0.25) !important; transition: box-shadow 0.3s ease !important; }
+.n8n-chat .chat-button:hover { box-shadow: 0 0 36px rgba(0,242,255,0.45) !important; }
+/* Scrollbar inside chat */
+.n8n-chat .chat-messages-container::-webkit-scrollbar { width: 4px; }
+.n8n-chat .chat-messages-container::-webkit-scrollbar-track { background: transparent; }
+.n8n-chat .chat-messages-container::-webkit-scrollbar-thumb { background: rgba(0,242,255,0.2); border-radius: 4px; }
+/* Override any white backgrounds */
+.n8n-chat .chat-window { border: 1px solid rgba(0,242,255,0.1) !important; box-shadow: 0 8px 40px rgba(0,0,0,0.6) !important; }
+</style>
+
 </body>
 </html>
