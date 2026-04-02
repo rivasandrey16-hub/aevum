@@ -48,13 +48,19 @@ body {
 .font-serif { font-family: 'Cormorant Garamond', serif; }
 .font-sans { font-family: 'Inter', sans-serif; }
 
-/* Marquee */
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-.marquee-track { animation: marquee 40s linear infinite; }
-.marquee-mask {
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
-}
+/* Contact cards */
+.contact-option { cursor:pointer; transition: all 0.4s cubic-bezier(.175,.885,.32,1.275); position:relative; overflow:hidden; }
+.contact-option::before { content:''; position:absolute; inset:0; border-radius:inherit; opacity:0; transition:opacity 0.4s ease; }
+.contact-option.wa::before { background:radial-gradient(circle at 50% 50%, rgba(37,211,102,0.08) 0%, transparent 70%); }
+.contact-option.fm::before { background:radial-gradient(circle at 50% 50%, rgba(0,242,255,0.06) 0%, transparent 70%); }
+.contact-option:hover::before { opacity:1; }
+.contact-option:hover { transform:translateY(-4px); }
+.contact-option:hover .co-glow { opacity:1; }
+.co-glow { position:absolute; inset:-1px; border-radius:inherit; opacity:0; transition:opacity 0.4s ease; pointer-events:none; }
+.contact-option.wa .co-glow { box-shadow: 0 0 30px rgba(37,211,102,0.2), inset 0 0 30px rgba(37,211,102,0.03); }
+.contact-option.fm .co-glow { box-shadow: 0 0 30px rgba(0,242,255,0.15), inset 0 0 30px rgba(0,242,255,0.03); }
+.contact-expand { max-height:0; overflow:hidden; transition: max-height 0.5s cubic-bezier(.175,.885,.32,1.275), opacity 0.4s ease, padding 0.4s ease; opacity:0; padding:0 24px; }
+.contact-expand.open { max-height:500px; opacity:1; padding:24px; }
 
 /* Service cards */
 .service-card .service-img { transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
@@ -142,10 +148,24 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <span class="text-xs font-sans font-medium tracking-[0.3em] uppercase text-white/30">AI Integration Agency</span>
       <div class="w-12 h-px bg-white/10"></div>
     </div>
-    <!-- Main title -->
-    <h1 id="heroTitle" class="font-serif italic font-light text-white/90 leading-[1.05] mb-8" style="font-size:clamp(2.8rem, 7vw, 6.5rem);">
-      Tu próximo empleado no duerme, no cobra horas extra y <span class="text-cyan">nunca</span> se equivoca
-    </h1>
+    <!-- Main title — rotating phrases -->
+    <h1 id="heroTitle" class="font-serif italic font-light text-white/90 leading-[1.05] mb-8" style="font-size:clamp(2.8rem, 7vw, 6.5rem);"></h1>
+    <script>
+    (function(){
+      var phrases = [
+        'Lo que hoy tarda <span class="text-cyan">semanas</span>, mañana lo hará una máquina en segundos',
+        'El futuro no reemplaza personas, reemplaza <span class="text-cyan">excusas</span>',
+        'Mientras tú duermes, tu negocio debería seguir <span class="text-cyan">pensando</span>',
+        'La inteligencia artificial no es el futuro, es lo que <span class="text-cyan">ya perdiste</span> por no empezar ayer',
+        'Cada proceso manual que repites es <span class="text-cyan">dinero</span> que eliges perder',
+        'Tu competencia no te va a esperar, y la <span class="text-cyan">IA</span> tampoco',
+        'Las empresas que sobreviven no son las más grandes, son las más <span class="text-cyan">inteligentes</span>',
+        'Automatizar no es deshumanizar, es liberar a tu equipo para lo que <span class="text-cyan">realmente importa</span>'
+      ];
+      var h1 = document.getElementById('heroTitle');
+      h1.innerHTML = phrases[Math.floor(Math.random() * phrases.length)];
+    })();
+    </script>
     <!-- Subtitle -->
     <p class="font-sans font-light text-body max-w-[600px] mx-auto text-base md:text-lg mb-12 rv" style="line-height:1.8;">
       Diseñamos, integramos y optimizamos soluciones de IA que generan resultados medibles desde el primer día.
@@ -165,41 +185,6 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   </div>
 </section>
 
-<!-- MARQUEE -->
-<section class="relative py-8 border-y border-white/[0.04] marquee-mask" style="z-index:1;">
-  <div class="overflow-hidden whitespace-nowrap">
-    <div class="marquee-track inline-flex">
-      <span class="inline-flex items-center gap-8 px-4 text-xs font-sans font-medium tracking-[0.25em] uppercase text-white/15">
-        <span>AUTOMATIZACI&Oacute;N</span><span class="text-cyan/30">&middot;</span>
-        <span>AGENTES IA</span><span class="text-cyan/30">&middot;</span>
-        <span>AN&Aacute;LISIS</span><span class="text-cyan/30">&middot;</span>
-        <span>INTEGRACI&Oacute;N</span><span class="text-cyan/30">&middot;</span>
-        <span>ESTRATEGIA</span><span class="text-cyan/30">&middot;</span>
-        <span>CONTENIDO IA</span><span class="text-cyan/30">&middot;</span>
-        <span>AUTOMATIZACI&Oacute;N</span><span class="text-cyan/30">&middot;</span>
-        <span>AGENTES IA</span><span class="text-cyan/30">&middot;</span>
-        <span>AN&Aacute;LISIS</span><span class="text-cyan/30">&middot;</span>
-        <span>INTEGRACI&Oacute;N</span><span class="text-cyan/30">&middot;</span>
-        <span>ESTRATEGIA</span><span class="text-cyan/30">&middot;</span>
-        <span>CONTENIDO IA</span><span class="text-cyan/30">&middot;</span>
-      </span>
-      <span class="inline-flex items-center gap-8 px-4 text-xs font-sans font-medium tracking-[0.25em] uppercase text-white/15">
-        <span>AUTOMATIZACI&Oacute;N</span><span class="text-cyan/30">&middot;</span>
-        <span>AGENTES IA</span><span class="text-cyan/30">&middot;</span>
-        <span>AN&Aacute;LISIS</span><span class="text-cyan/30">&middot;</span>
-        <span>INTEGRACI&Oacute;N</span><span class="text-cyan/30">&middot;</span>
-        <span>ESTRATEGIA</span><span class="text-cyan/30">&middot;</span>
-        <span>CONTENIDO IA</span><span class="text-cyan/30">&middot;</span>
-        <span>AUTOMATIZACI&Oacute;N</span><span class="text-cyan/30">&middot;</span>
-        <span>AGENTES IA</span><span class="text-cyan/30">&middot;</span>
-        <span>AN&Aacute;LISIS</span><span class="text-cyan/30">&middot;</span>
-        <span>INTEGRACI&Oacute;N</span><span class="text-cyan/30">&middot;</span>
-        <span>ESTRATEGIA</span><span class="text-cyan/30">&middot;</span>
-        <span>CONTENIDO IA</span><span class="text-cyan/30">&middot;</span>
-      </span>
-    </div>
-  </div>
-</section>
 
 <!-- SERVICIOS -->
 <section id="servicios" class="relative py-28 md:py-40" style="z-index:1;">
@@ -445,23 +430,85 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 
 <!-- CONTACTO -->
 <section id="contacto" class="relative py-28 md:py-40" style="z-index:1;">
-  <div class="max-w-[700px] mx-auto px-6 text-center">
-    <div class="mb-12 rv">
+  <div class="max-w-[800px] mx-auto px-6">
+    <div class="text-center mb-16 rv">
       <span class="text-xs font-sans font-medium tracking-[0.3em] uppercase text-cyan/60 block mb-4">Da el primer paso</span>
-      <h2 class="font-serif italic font-light text-white/90 text-4xl md:text-6xl">Hablemos</h2>
+      <h2 class="font-serif italic font-light text-white/90 text-4xl md:text-6xl mb-4">Hablemos</h2>
+      <p class="font-sans font-light text-body text-sm">Elige tu canal preferido</p>
     </div>
-    <form id="contactForm" class="text-left space-y-6 rv">
-      <input type="text" name="company" placeholder="Tu empresa" class="form-input" required>
-      <input type="email" name="email" placeholder="Tu email" class="form-input" required>
-      <textarea name="challenge" placeholder="¿Qué tarea te gustaría dejar de hacer manualmente?" class="form-input" rows="4" required></textarea>
-      <div id="formMsg" class="hidden text-center p-4 rounded-xl border text-sm"></div>
-      <div class="text-center pt-4">
-        <button id="submitBtn" type="submit" class="px-10 py-3.5 bg-cyan text-black font-sans font-medium text-sm rounded-full hover:shadow-[0_0_30px_rgba(0,242,255,0.3)] transition-all duration-300">Enviar mensaje</button>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 rv">
+
+      <!-- WHATSAPP CARD -->
+      <div class="contact-option wa rounded-2xl border border-[#25D366]/15 bg-white/[0.02] p-6 text-center" onclick="toggleContact('wa')">
+        <div class="co-glow rounded-2xl"></div>
+        <div class="relative z-10">
+          <svg class="w-10 h-10 mx-auto mb-4" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <h3 class="font-sans font-medium text-white/90 text-sm tracking-wide mb-1">WhatsApp</h3>
+          <p class="font-sans font-light text-[11px] text-[#25D366]/60">Respuesta inmediata</p>
+          <svg class="w-4 h-4 mx-auto mt-3 text-white/20 transition-transform duration-300" id="wa-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
       </div>
-      <p class="text-center text-xs text-white/20 font-sans font-light pt-2">Sin compromiso · Respondemos en &lt;24h · Tu información es confidencial</p>
-    </form>
+
+      <!-- FORMULARIO CARD -->
+      <div class="contact-option fm rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 text-center" onclick="toggleContact('fm')">
+        <div class="co-glow rounded-2xl"></div>
+        <div class="relative z-10">
+          <svg class="w-10 h-10 mx-auto mb-4 text-cyan/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <h3 class="font-sans font-medium text-white/90 text-sm tracking-wide mb-1">Formulario</h3>
+          <p class="font-sans font-light text-[11px] text-cyan/40">Respondemos en &lt;24h</p>
+          <svg class="w-4 h-4 mx-auto mt-3 text-white/20 transition-transform duration-300" id="fm-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- EXPANDABLE: WHATSAPP -->
+    <div class="contact-expand mt-5 rounded-2xl border border-[#25D366]/10 bg-white/[0.015]" id="expand-wa">
+      <div class="text-center">
+        <p class="font-sans font-light text-sm text-body leading-relaxed mb-5">Escríbenos directo y recibe asesoría personalizada al instante.</p>
+        <a href="https://wa.me/573167369604?text=Hola%20SELDREN%2C%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20de%20IA" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-[#25D366] text-white font-sans font-medium text-sm rounded-full hover:bg-[#20bd5a] hover:shadow-[0_0_30px_rgba(37,211,102,0.3)] transition-all duration-300">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- EXPANDABLE: FORMULARIO -->
+    <div class="contact-expand mt-5 rounded-2xl border border-white/[0.04] bg-white/[0.015]" id="expand-fm">
+      <form id="contactForm" class="space-y-5 max-w-[500px] mx-auto">
+        <input type="text" name="company" placeholder="Tu empresa" class="form-input" required>
+        <input type="email" name="email" placeholder="Tu email" class="form-input" required>
+        <textarea name="challenge" placeholder="¿Qué tarea te gustaría automatizar?" class="form-input" rows="3" required></textarea>
+        <div id="formMsg" class="hidden text-center p-4 rounded-xl border text-sm"></div>
+        <div class="text-center pt-2">
+          <button id="submitBtn" type="submit" class="px-8 py-3 bg-cyan text-black font-sans font-medium text-sm rounded-full hover:shadow-[0_0_30px_rgba(0,242,255,0.3)] transition-all duration-300">Enviar mensaje</button>
+        </div>
+        <p class="text-center text-xs text-white/15 font-sans font-light pt-1">Tu información es confidencial</p>
+      </form>
+    </div>
+
   </div>
 </section>
+<script>
+function toggleContact(type){
+  var wa = document.getElementById('expand-wa');
+  var fm = document.getElementById('expand-fm');
+  var waArr = document.getElementById('wa-arrow');
+  var fmArr = document.getElementById('fm-arrow');
+  if(type === 'wa'){
+    var isOpen = wa.classList.contains('open');
+    wa.classList.toggle('open');
+    waArr.style.transform = isOpen ? '' : 'rotate(180deg)';
+    if(fm.classList.contains('open')){ fm.classList.remove('open'); fmArr.style.transform = ''; }
+  } else {
+    var isOpen = fm.classList.contains('open');
+    fm.classList.toggle('open');
+    fmArr.style.transform = isOpen ? '' : 'rotate(180deg)';
+    if(wa.classList.contains('open')){ wa.classList.remove('open'); waArr.style.transform = ''; }
+  }
+}
+</script>
 
 <!-- FOOTER -->
 <footer class="relative border-t border-white/[0.04] py-12" style="z-index:1;">
@@ -471,6 +518,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <svg viewBox="0 0 100 120" fill="none" class="w-4 h-5"><path d="M70 20C70 20 62 10 44 10C26 10 14 22 14 34C14 46 26 52 44 58C62 64 72 70 72 84C72 98 60 108 44 108C26 108 18 98 18 98" stroke="#00f2ff" stroke-width="5" stroke-linecap="round" opacity="0.4"/></svg>
     </span>
     <div class="flex items-center gap-6 text-xs font-sans font-light text-white/20">
+      <a href="https://wa.me/573167369604" target="_blank" rel="noopener" class="hover:text-[#25D366] transition-colors">WhatsApp</a>
       <a href="https://www.facebook.com/profile.php?id=61579409933682" target="_blank" rel="noopener" class="hover:text-white/50 transition-colors">Facebook</a>
       <a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-white/50 transition-colors">Instagram</a>
       <a href="#" class="hover:text-white/50 transition-colors">Privacidad</a>
